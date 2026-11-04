@@ -1,0 +1,8 @@
+@use 'mixins' as *;
+.list { border-top: 1px solid var(--line); }
+.item { display: grid; gap: 18px; padding-block: clamp(32px, 5vw, 56px); border-bottom: 1px solid var(--line); @include up(900px) { grid-template-columns: 80px 1.2fr 1fr; gap: 40px; align-items: start; }
+  p { margin-top: 10px; max-width: 40ch; }
+  ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; li { padding-left: 22px; position: relative; color: var(--text); &::before { content: '✦'; position: absolute; left: 0; color: var(--accent); font-size: 11px; top: 5px; } } } }
+.num { font-family: var(--font-heading); color: var(--accent); }
+.process { display: grid; gap: 14px; margin-top: 28px; @include up(900px) { grid-template-columns: repeat(4, 1fr); } }
+.step { @include card; padding: 28px; strong { font-family: var(--font-heading); color: var(--accent); } h3 { font-size: 24px; margin: 28px 0 10px; } }

@@ -1,0 +1,19 @@
+@use 'mixins' as *;
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: transform 0.5s var(--ease-out), background 0.4s, backdrop-filter 0.4s; }
+.scrolled { background: rgba(7, 11, 20, 0.72); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+.hidden { transform: translateY(-100%); }
+.row { display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 24px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-heading); font-weight: 700; font-size: 22px; letter-spacing: -0.02em; z-index: 2; }
+.links { display: none; gap: 34px; @include up(900px) { display: flex; } }
+.link { font-size: 15px; color: var(--muted); position: relative; padding: 6px 0; transition: color 0.3s;
+  &::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--ease-out); }
+  &:hover, &.active { color: var(--text); &::after { transform: scaleX(1); } } }
+.cta { display: none; @include up(900px) { display: block; } }
+.burger { width: 44px; height: 44px; display: grid; place-content: center; gap: 7px; z-index: 2; @include up(900px) { display: none; }
+  span { display: block; width: 26px; height: 2px; background: var(--text); transition: transform 0.4s var(--ease-out); }
+  &[aria-expanded='true'] span:first-child { transform: translateY(4.5px) rotate(45deg); }
+  &[aria-expanded='true'] span:last-child { transform: translateY(-4.5px) rotate(-45deg); } }
+.sheet { position: fixed; inset: 0; background: var(--ink); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 18px; padding: 100px var(--gutter) 60px; clip-path: inset(0 0 100% 0); transition: clip-path 0.6s var(--ease-out); visibility: hidden; @include up(900px) { display: none; } }
+.sheetOpen { clip-path: inset(0 0 0 0); visibility: visible; }
+.sheetLink { font-family: var(--font-heading); font-size: clamp(38px, 11vw, 64px); font-weight: 700; letter-spacing: -0.03em; opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s var(--ease-out); }
+.sheetOpen .sheetLink { opacity: 1; transform: none; }

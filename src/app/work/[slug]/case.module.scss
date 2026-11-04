@@ -1,0 +1,10 @@
+@use 'mixins' as *;
+.cover { border-radius: var(--radius); overflow: hidden; aspect-ratio: 16 / 9; border: 1px solid var(--line); background: var(--ink-2); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 20px 0 0; li { font-size: 13px; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); } }
+.cols { display: grid; gap: 24px; padding-block: clamp(32px, 5vw, 64px); border-top: 1px solid var(--line); @include up(900px) { grid-template-columns: 1fr 1.4fr; gap: 80px; } }
+.copy { font-size: clamp(18px, 2vw, 24px); line-height: 1.55; max-width: 48ch; }
+.stack { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0; margin: 0; li { padding: 10px 18px; border: 1px solid rgba(245, 165, 36, 0.4); border-radius: 999px; font-weight: 500; } }
+.results { display: grid; gap: 12px; margin-top: 12px; @include up(640px) { grid-template-columns: repeat(3, 1fr); } }
+.result { border-top: 1px solid var(--line); padding-top: 20px; display: flex; flex-direction: column; gap: 4px; strong { font-family: var(--font-heading); font-size: clamp(40px, 6vw, 80px); letter-spacing: -0.04em; color: var(--accent); line-height: 1; } }
+.note { margin-top: 24px; font-size: 14px; }
+.next { display: flex; flex-direction: column; gap: 6px; padding-block: 24px; border-block: 1px solid var(--line); transition: color 0.3s; &:hover { color: var(--accent); } }

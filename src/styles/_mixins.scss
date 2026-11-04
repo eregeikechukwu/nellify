@@ -1,0 +1,10 @@
+@use 'functions' as *;
+
+@mixin up($bp) { @media (min-width: $bp) { @content; } }
+@mixin display-xl { font-family: var(--font-heading); font-weight: 700; line-height: 0.98; letter-spacing: -0.035em; font-size: fluid(40, 116); }
+@mixin display-lg { font-family: var(--font-heading); font-weight: 700; line-height: 1.02; letter-spacing: -0.03em; font-size: fluid(36, 88); }
+@mixin display-md { font-family: var(--font-heading); font-weight: 600; line-height: 1.08; letter-spacing: -0.02em; font-size: fluid(26, 44); }
+@mixin eyebrow { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+@mixin container { width: 100%; max-width: 1360px; margin-inline: auto; padding-inline: var(--gutter); }
+@mixin card { background: var(--ink-2); border: 1px solid var(--line); border-radius: var(--radius); }
+@mixin focus-ring { outline: 2px solid var(--glow); outline-offset: 3px; }

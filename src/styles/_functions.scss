@@ -1,0 +1,7 @@
+@use 'sass:math';
+// Fluid clamp between two sizes across a viewport range.
+@function fluid($min, $max, $vw-min: 360, $vw-max: 1440) {
+  $slope: math.div($max - $min, $vw-max - $vw-min);
+  $base: $min - $slope * $vw-min;
+  @return clamp(#{$min}px, #{$base}px + #{$slope * 100}vw, #{$max}px);
+}

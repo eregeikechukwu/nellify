@@ -1,0 +1,9 @@
+@use 'mixins' as *;
+.hero { min-height: 100svh; display: flex; align-items: flex-end; padding: 120px 0 clamp(56px, 9vh, 110px); position: relative; }
+.inner { display: flex; flex-direction: column; align-items: flex-start; }
+.title { max-width: 15ch; @include up(900px) { max-width: 16ch; } }
+.sub { max-width: 46ch; font-size: clamp(16px, 1.6vw, 20px); margin-top: 28px; }
+.actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 36px; }
+.cue { position: absolute; right: var(--gutter); bottom: 40px; display: none; flex-direction: column; align-items: center; gap: 12px; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); writing-mode: vertical-rl; @include up(900px) { display: flex; }
+  i { width: 1px; height: 54px; background: linear-gradient(var(--accent), transparent); animation: drip 2s var(--ease-out) infinite; } }
+@keyframes drip { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }

@@ -1,0 +1,19 @@
+@use 'mixins' as *;
+.work { padding-block: clamp(72px, 10vw, 120px); @include up(900px) { padding-block: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; overflow: hidden; } }
+.head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: clamp(32px, 5vw, 56px); }
+.head h2 { max-width: 14ch; }
+.note { max-width: 34ch; }
+.viewport { @include up(900px) { padding-left: var(--gutter); } }
+.track { display: grid; gap: 32px; padding-inline: var(--gutter); @include up(900px) { display: flex; gap: 40px; padding-inline: 0; width: max-content; will-change: transform; } }
+.card { display: block; flex: none; @include up(900px) { width: min(44vw, 620px); } }
+.media { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 3; border: 1px solid var(--line); background: var(--ink-2); }
+.art { position: absolute; inset: 0; transition: transform 0.8s var(--ease-out); }
+.card:hover .art { transform: scale(1.06); }
+.view { position: absolute; left: 20px; bottom: 20px; background: var(--accent); color: var(--ink); font-weight: 600; font-size: 14px; padding: 10px 18px; border-radius: 999px; transform: translateY(16px); opacity: 0; transition: all 0.45s var(--ease-out); }
+.card:hover .view, .card:focus-visible .view { transform: none; opacity: 1; }
+@media (hover: none) { .view { transform: none; opacity: 1; } }
+.meta { display: flex; gap: 18px; padding-top: 20px;
+  h3 { font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -0.02em; margin-bottom: 6px; } }
+.idx { font-family: var(--font-heading); color: var(--accent); font-size: 14px; padding-top: 8px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 14px 0 0; li { font-size: 12px; padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); } }
+.end { flex: none; display: none; flex-direction: column; justify-content: center; align-items: flex-start; gap: 20px; width: 320px; padding-right: var(--gutter); @include up(900px) { display: flex; } }

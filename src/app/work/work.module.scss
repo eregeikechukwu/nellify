@@ -1,0 +1,2 @@
+@use 'mixins' as *;
+.grid { display: grid; gap: clamp(40px, 6vw, 72px) 32px; @include up(900px) { grid-template-columns: repeat(2, 1fr); } }

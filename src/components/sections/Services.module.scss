@@ -1,0 +1,12 @@
+@use 'mixins' as *;
+.services { background: rgba(7, 11, 20, 0.55); }
+.list { list-style: none; padding: 0; margin: clamp(32px, 5vw, 64px) 0 0; border-top: 1px solid var(--line); }
+.item { border-bottom: 1px solid var(--line); }
+.row { display: grid; grid-template-columns: 40px 1fr 32px; gap: 6px 16px; align-items: center; padding: 26px 0; position: relative; transition: padding 0.5s var(--ease-out);
+  @include up(900px) { grid-template-columns: 70px 1.1fr 1.4fr 40px; padding: 34px 0; }
+  &::before { content: ''; position: absolute; inset: 0 calc(var(--gutter) * -1); background: linear-gradient(90deg, rgba(245, 165, 36, 0.09), transparent); opacity: 0; transition: opacity 0.4s; z-index: -1; }
+  &:hover { padding-left: 14px; &::before { opacity: 1; } .title { color: var(--accent); } .arrow { transform: translate(4px, -4px); color: var(--accent); } } }
+.num { font-family: var(--font-heading); color: var(--muted); font-size: 14px; }
+.title { font-size: clamp(24px, 3.2vw, 42px); line-height: 1.1; letter-spacing: -0.025em; font-weight: 600; transition: color 0.3s; }
+.desc { grid-column: 2; @include up(900px) { grid-column: auto; } }
+.arrow { grid-row: 1; grid-column: 3; justify-self: end; font-size: 22px; transition: transform 0.4s var(--ease-out), color 0.3s; @include up(900px) { grid-row: auto; grid-column: auto; } }

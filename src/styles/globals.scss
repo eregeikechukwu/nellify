@@ -1,0 +1,45 @@
+@use 'root';
+@use 'mixins' as *;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--ink); color-scheme: dark; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+body {
+  margin: 0; background: var(--ink); color: var(--text);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; height: auto; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font-heading); }
+p { margin: 0; }
+:focus-visible { @include focus-ring; }
+::selection { background: var(--accent); color: var(--ink); }
+
+.container { @include container; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.section { padding-block: clamp(72px, 12vw, 160px); position: relative; }
+.eyebrow { @include eyebrow; display: inline-block; margin-bottom: 20px; }
+.h-xl { @include display-xl; }
+.h-lg { @include display-lg; }
+.h-md { @include display-md; }
+.muted { color: var(--muted); }
+.accent { color: var(--accent); }
+
+// Line mask used by text reveals
+.line-mask { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+
+@media (pointer: fine) { body.has-cursor, body.has-cursor a, body.has-cursor button { cursor: none; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+// Pending states stop a flash of unstyled content before GSAP takes over.
+.rt-pending { opacity: 0; }
+.rv-pending { opacity: 0; }

@@ -1,0 +1,9 @@
+.list { border-top: 1px solid var(--line); }
+.item { border-bottom: 1px solid var(--line); h3 { font-family: inherit; } }
+.q { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 24px; text-align: left; padding: 26px 0; font-family: var(--font-heading); font-size: clamp(18px, 2.2vw, 26px); font-weight: 600; letter-spacing: -0.015em; }
+.icon { position: relative; width: 18px; height: 18px; flex: none;
+  &::before, &::after { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: var(--accent); transition: transform 0.4s var(--ease-out); }
+  &::after { transform: rotate(90deg); } }
+.q[aria-expanded='true'] .icon::after { transform: rotate(0); }
+.panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.5s var(--ease-out); > div { overflow: hidden; } p { padding: 0 0 26px; max-width: 64ch; } }
+.open { grid-template-rows: 1fr; }
